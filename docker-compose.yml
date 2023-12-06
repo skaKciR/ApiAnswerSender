@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  apianswersender:
+    image: ${DOCKER_REGISTRY-}apianswersender
+    build:
+      context: .
+      dockerfile: ApiAnswerSender/Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Message__0__Body="NewText"
+
+
+  apianswercaller:
+    image: ${DOCKER_REGISTRY-}apianswercaller
+    build:
+      context: .
+      dockerfile: ApiAnswerCaller/Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ApiUrl=http://apianswersender:80
+      - Message =ThisWasClose
