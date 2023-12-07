@@ -10,7 +10,7 @@ services:
       - "5000:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - Message__0__Body="NewText"
+      - Message__Body="NewText"
 
 
   apianswercaller:

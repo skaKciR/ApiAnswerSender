@@ -17,7 +17,7 @@ namespace ApiAnswerSender.Controllers
         [HttpGet("/")]
         public IActionResult Get()
         {
-            var message = _configuration["Message"];
+            var message = _configuration["Message:Body"];
             _logger.LogInformation($"К сервису обратились.Текущее значение переменной message - {message}");
 
             return Ok($"{message}");
